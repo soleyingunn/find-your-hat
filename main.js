@@ -6,14 +6,19 @@ const fieldCharacter = '░';
 const pathCharacter = '*';
 
 class Field {
-    constructor(fieldArr) {
-        this._field = fieldArr;
+    constructor(field = [[]]) {
+        this.field = field;
+        this.locationX = 0;
+        this.locationY = 0;
+        // Set the "home" position before the game starts
+        this.field[0][0] = pathCharacter;
     }
 
     print() {
-        for (let i = 0; i < this._field.length; i++) {
-            console.log(this._field[i].join(''));
-        }
+        const displayString = this.field.map(row => {
+            return row.join('');
+        }).join('\n');
+        console.log(displayString);
     }
 };
 
